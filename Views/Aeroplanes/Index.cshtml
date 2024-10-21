@@ -1,0 +1,120 @@
+﻿@* @model IEnumerable<AirlineReservationApp.Models.Aeroplane> *@
+@model AirlineReservationApp.Models.Aeroplane
+@{
+    ViewData["Title"] = "Aeroplane List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2 class="title1">@ViewData["Title"]</h2>
+        <div>
+            <button class="btn btn-primary mb-2" id="btnAdd">Add Aeroplane</button>
+        </div>
+        <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
+            <table class="table table-success table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AeroplaneName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SeatingCapacity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PurchaseDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @* @Html.DisplayNameFor(model => model.ImageID) *@Image
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AirlineCompanyId)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tblBody">
+                    @*  @foreach (var item in Model)
+                    {
+                    <tr>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.AeroplaneName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.SeatingCapacity)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.ImageID)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.AirlineCompany.AirlineCompanyName)
+                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.PlaneID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PlaneID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PlaneID">Delete</a>
+                    </td>
+                    </tr>
+                    } *@
+                </tbody>
+            </table>
+            @*  <div>
+            <a asp-action="Create" class=" fa fa-plus-circle btn-sm">Add New Aeroplane</a>
+            </div> *@
+        </div>
+        <div class="modal" id="AeroplaneModal">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="modalTitle"></h3>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="PlaneID" value="0" />
+                        <div class="mb-2">
+                            <label asp-for="AeroplaneName"></label>
+                            <input type="text" asp-for="AeroplaneName" class="form-control" placeholder="Aeroplane Name" />
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="SeatingCapacity" class="control-label"></label>
+                            <input type="number" asp-for="SeatingCapacity" class="form-control" placeholder="Seating Capacity" />
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="AirlineCompanyId">Airline Company</label>
+                            <select asp-for="AirlineCompanyId" class="form-control" asp-items="ViewBag.AirlineCompanyNavigationKey" placeholder="Airline Company"></select>
+                         
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="PurchaseDate" class="control-label"></label>
+                            <input type="date" asp-for="PurchaseDate" class="form-control" placeholder="Purchase Date" />
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input type="double" asp-for="Price" class="form-control" placeholder="Price" />
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="Image" class="control-label"></label>
+                            <select asp-for="Image" class="form-control" asp-items="ViewBag.Image"></select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="Save" type="submit" onclick="Insert();">Save</button>
+                        <button class="btn btn-success" id="Update" type="submit" onclick="Update();" style="display:none">Update</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal" type="submit" onclick="HideModal();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/aeroplanejs.js"></script> 

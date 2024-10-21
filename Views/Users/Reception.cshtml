@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewData["Title"] = "Reception";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div id="page-wrapper">
+
+    <style>
+        header {
+            text-align: center;
+            overflow: hidden; /* Ensure the container doesn't overflow */
+        }
+
+        #imageContainer {
+            width: 28cm;
+            max-width: 10cm; /* Adjust the container width as needed */
+            height: 10cm;
+            display: contents;
+            transition: transform 1s ease; /* Apply transition to the transform property */
+        }
+
+        #dynamicHeaderImage {
+            width: 28cm;
+            height: 10cm;
+        }
+
+
+        #welcomeText {
+            margin-top: 2cm;
+            margin-left: 4cm;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid; /* simulate the typing cursor */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-palette: dark;
+            color: rebeccapurple;
+            position: center;
+        }
+    </style>
+
+    <header>
+        <center>
+            <div id="imageContainer" onclick="nextImage()">
+                <img id="dynamicHeaderImage" src="" alt="Dynamic Header Image">
+            </div>
+        </center>
+    </header>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div>
+        <h1 id="welcomeText"></h1>
+        @TempData["Message"]
+    </div>
+
+    <script>
+        var imageContainer = document.getElementById('imageContainer');
+        var headerImage = document.getElementById('dynamicHeaderImage');
+        var imagePaths = ["/Temp/images/image1.jpg", "/Temp/images/image2.png", "/Temp/images/image4.png", "/Temp/images/image5.png", "/Temp/images/image6.jpg"]; // Add your image paths here
+        var currentIndex = 0;
+
+        function changeHeaderImage(index) {
+            if (index !== undefined) {
+                currentIndex = index;
+            } else {
+                currentIndex = (currentIndex + 1) % imagePaths.length;
+            }
+            imageContainer.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+            headerImage.src = imagePaths[currentIndex];
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + imagePaths.length) % imagePaths.length;
+            changeHeaderImage();
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % imagePaths.length;
+            changeHeaderImage();
+        }
+
+        // Change image automatically every 2000 milliseconds (2 seconds)
+        setInterval(function () {
+            changeHeaderImage();
+        }, 2000);
+
+        // Initial image setup
+        window.onload = function () {
+            changeHeaderImage();
+        };
+
+
+        /****************Texte de réception******************/
+
+        const welcomeText = "Welcome To Our Airline Reservation System";
+        const targetElement = document.getElementById('welcomeText');
+
+        function typeWriter(text, index) {
+            if (index < text.length) {
+                targetElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(function () {
+                    typeWriter(text, index);
+                }, 100); // Adjust the typing speed (milliseconds)
+            } else {
+                setTimeout(function () {
+                    targetElement.innerHTML = ''; // Réinitialiser le contenu après avoir écrit la phrase complète
+                    typeWriter(text, 0); // Commencer à écrire à partir de la première lettre
+                }, 1000); // Délai avant de réinitialiser le texte (en millisecondes)
+            }
+        }
+
+        window.onload = function () {
+            typeWriter(welcomeText, 0);
+        };
+    </script>
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AirlineReservationApp.Models.AirlineCompany>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2 class="title1">List of AirlineCompanies</h2>
+        <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AirlineCompanyName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AirlineCompanyName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.AirlineCompanyId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.AirlineCompanyId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.AirlineCompanyId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <p>
+                <a asp-action="Create" class=" fa fa-plus-circle btn-sm">Add New AirlineCompany</a>
+            </p>
+        </div>
+    </div>
+</div>

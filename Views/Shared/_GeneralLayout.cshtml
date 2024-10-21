@@ -1,0 +1,214 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Temp/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="~/Temp/css/style.css" rel='stylesheet' type='text/css' />
+
+    <!-- font-awesome icons CSS -->
+    <link href="~/Temp/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons CSS-->
+    <!-- side nav css file -->
+    <link href='~/Temp/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- //side nav css file -->
+    <!-- js-->
+    <script src="~/Temp/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Temp/js/modernizr.custom.js"></script>
+
+    <!--webfonts-->
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <!--//webfonts-->
+    <!-- chart -->
+    <script src="/Temp/js/Chart.js"></script>
+    <!-- //chart -->
+    <!-- Metis Menu -->
+    <script src="~/Temp/js/metisMenu.min.js"></script>
+    <script src="~/Temp/js/custom.js"></script>
+    <link href="~/Temp/css/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 295px;
+        }
+    </style>
+    <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
+    <script src="~/Temp/js/pie-chart.js" type="text/javascript"></script>
+    <!-- requried-jsfiles-for owl -->
+    <link href="~/Temp/css/owl.carousel.css" rel="stylesheet">
+    <script src="~/Temp/js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                items: 3,
+                lazyLoad: true,
+                autoPlay: true,
+                pagination: true,
+                nav: true,
+            });
+        });
+    </script>
+    <!-- //requried-jsfiles-for owl -->
+
+</head>
+<body class="cbp-spmenu-push">
+    <!-- header-starts -->
+    <div class="sticky-header header-section ">
+        <div class="header-left">
+            <!--toggle button start-->
+            <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+            <!--toggle button end-->
+
+
+        </div>
+        <div class="header-right">
+
+
+            <!--search-box-->
+            <div class="search-box">
+                <form class="input">
+                    <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
+                    <label class="input__label" for="input-31">
+                        <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                            <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+                        </svg>
+                    </label>
+                </form>
+            </div><!--//end-search-box-->
+
+            <div class="profile_details">
+                <ul>
+                    <li class=" profile_details_drop">
+                        <a href="#" class="toggle" data-toggle="dropdown" aria-expanded="false">
+                            <div class="profile_img">
+
+                                <div class="user-name">
+                                    <a asp-controller="Users" asp-action="UserLogin"><p><button type="button" >Login as User</button></p></a>
+                                    <a  asp-controller="Admins" asp-action="AdminLogin"><p><button type="button" >Login as Admin</button> </p></a>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="header-left">
+        </div>
+
+        <div class="clearfix"></div>
+
+
+
+
+        <div class="clearfix"> </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!-- //header-ends -->
+    <div class="main-content">
+        <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+            <!--left-fixed -navigation-->
+            <aside class="sidebar-left">
+                <nav class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1><a asp-action="GeneralReception" class="navbar-brand"><span class="fa fa-plane"></span> Flight</a></h1>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="sidebar-menu">
+                            <li class="header">MAIN NAVIGATION</li>
+
+
+                            <li class="header">LABELS</li>
+                            <li><a href="#"><i class="fa fa-angle-right text-red"></i> <span>About AirlineReservationApp</span></a></li>
+
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </aside>
+        </div>
+        @if (!string.IsNullOrEmpty((string)TempData["Message"]))
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["Message"]
+            </div>
+        }
+        @RenderBody()
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <p> &copy; 2023 - AirlineReservationApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+    </div>
+    <!--//footer-->
+    <!-- new added graphs chart js-->
+
+    <script src="/Temp/js/Chart.bundle.js"></script>
+    <script src="/Temp/js/utils.js"></script>
+    <!-- Classie --><!-- for toggle left push menu script -->
+    <script src="~/Temp/js/classie.js"></script>
+
+
+    <script>
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
+            showLeftPush = document.getElementById('showLeftPush'),
+            body = document.body;
+
+        showLeftPush.onclick = function () {
+            classie.toggle(this, 'active');
+            classie.toggle(body, 'cbp-spmenu-push-toright');
+            classie.toggle(menuLeft, 'cbp-spmenu-open');
+            disableOther('showLeftPush');
+        };
+
+
+        function disableOther(button) {
+            if (button !== 'showLeftPush') {
+                classie.toggle(showLeftPush, 'disabled');
+            }
+        }
+    </script>
+    <!-- //Classie --><!-- //for toggle left push menu script -->
+    <!--scrolling js-->
+    <script src="~/Temp/js/jquery.nicescroll.js"></script>
+    <script src="~/Temp/js/scripts.js"></script>
+    <!--//scrolling js-->
+    <!-- side nav js -->
+    <script src='~/Temp/js/SidebarNav.min.js' type='text/javascript'></script>
+    <script>
+        $('.sidebar-menu').SidebarNav()
+    </script>
+    <!-- //side nav js -->
+    <!-- for index page weekly sales java script -->
+    <script src="~/Temp/js/SimpleChart.js"></script>
+
+    <!-- //for index page weekly sales java script -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Temp/js/bootstrap.js"> </script>
+    <!-- //Bootstrap Core JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model AirlineReservationApp.Models.Flight
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2 class="title1">Details Flight</h2>
+        <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DepartureAirport)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DepartureAirport)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ArrivalAirport)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ArrivalAirport)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DepartureDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DepartureDateTime)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AircraftType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AircraftType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.SeatingCapacity)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.SeatingCapacity)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AvailableSeats)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AvailableSeats)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Aeroplane)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Aeroplane.PlaneID)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.FlightId">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

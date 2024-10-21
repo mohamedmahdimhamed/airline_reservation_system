@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AirlineReservationApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "ConsultDemand";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2 class="title1">Consult Demands</h2>
+
+        <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Passport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepartureAirport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ArrivalAirport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepartureDateTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TicketPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Passport)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepartureAirport)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArrivalAirport)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepartureDateTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookingDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TicketPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.Status)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.BookingId">Modifier</a> |
+                                <a asp-action="Create" asp-route-id="@item.BookingId">New Booking</a> |
+                                <a asp-action="Delete" asp-route-id="@item.BookingId">Cancel</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model AirlineReservationApp.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page login-page ">
+        <h2 class="title1">Login</h2>
+        <div class="widget-shadow">
+            <div class="login-body">
+                <form asp-action="UserLogin">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <center>
+                        <i class="text-danger">
+                            @ViewBag.m
+                        </i>
+                    </center>
+                    <input asp-for="Email" class="user" placeholder="Enter Username(email)" required="">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <input id="pwd" type="password" asp-for="Password" class="lock" placeholder="Enter Password" required="">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <div class="forgot-grid">
+
+                        <label class="checkbox">
+                            <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()" /><i></i>Show password
+                        </label>
+
+                        <div class="forgot">
+                            <a href="#">forgot password?</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <input type="submit" name="Sign In" value="Sign In">
+                    <div class="registration">
+                        Don't have an account ?
+                        <a asp-action="Create">
+                            Create an account
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @*
+        <div>
+        <a class="hvr-icon-pulse col-18" asp-action="Index">Back to List</a>
+        </div> *@
+
+    </div>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('pwd');
+            var showPasswordCheckbox = document.getElementById('showPassword');
+
+            passwordField.type = showPasswordCheckbox.checked ? 'email' : 'password';
+        }
+    </script>
+</div>

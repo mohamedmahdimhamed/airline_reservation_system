@@ -1,0 +1,75 @@
+﻿@model AirlineReservationApp.Models.Booking
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2 class="title1">New Booking</h2>
+
+        <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="UserId" class="control-label"></label>
+                            <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Passport" class="control-label"></label>
+                            <input asp-for="Passport" class="form-control" />
+                            <span asp-validation-for="Passport" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FligthId" class="control-label"></label>
+                            <select asp-for="FligthId" class="form-control" asp-items="ViewBag.FligthId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DepartureAirport" class="control-label"></label>
+                            <input asp-for="DepartureAirport" class="form-control" />
+                            <span asp-validation-for="DepartureAirport" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ArrivalAirport" class="control-label"></label>
+                            <input asp-for="ArrivalAirport" class="form-control" />
+                            <span asp-validation-for="ArrivalAirport" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DepartureDateTime" class="control-label"></label>
+                            <input asp-for="DepartureDateTime" class="form-control" />
+                            <span asp-validation-for="DepartureDateTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BookingDate" class="control-label"></label>
+                            <input asp-for="BookingDate" class="form-control" />
+                            <span asp-validation-for="BookingDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TicketPrice" class="control-label"></label>
+                            <input asp-for="TicketPrice" class="form-control" />
+                            <span asp-validation-for="TicketPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label"></label>
+                            <input asp-for="Status" class="form-control" />
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+           @*  <div>
+                <a asp-action="Index">Back to List</a>
+            </div> *@
+
+           
+        </div>
+    </div>
+</div>

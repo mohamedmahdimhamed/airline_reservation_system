@@ -1,0 +1,60 @@
+﻿@model AirlineReservationApp.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="main-page signup-page">
+        <h2 class="title1">Sign Up</h2>
+        <div class="sign-up-row widget-shadow">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="sign-u">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" placeholder="Your First Name" required="">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="sign-u">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" placeholder="Your Last Name" required="">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                    <div class="clearfix"> </div>
+                </div>
+
+                <div class="sign-u">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Your Email Address" required="">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="sign-u">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Your Password" required="">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="sign-u">
+                    <label asp-for="CPassword" class="control-label"></label>
+                    <input asp-for="CPassword" type="password" class="form-control" placeholder="Confirm Password" required="">
+                    <span asp-validation-for="CPassword" class="text-danger"></span>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="sub_home">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="registration">
+                    Already Registered.
+                    <a asp-action="UserLogin">Login</a>
+                </div>
+            </form>
+            @section Scripts {
+                @{
+                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                }
+            }
+        </div>
+    </div>
+</div>
